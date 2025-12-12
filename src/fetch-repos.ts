@@ -1,3 +1,4 @@
+import { getPreferenceValues } from "@raycast/api";
 import type { RepositoryResponse } from "./repository-response";
 
 function subDays(date: Date, days: number) {
@@ -25,11 +26,20 @@ interface FetchReposInput {
   cursor: number;
 }
 export async function fetchRepos(input: FetchReposInput) {
+  const preferences = getPreferenceValues<ExtensionPreferences>();
+  const { githubToken } = preferences;
   const subDate = getPeriodFn(input.period);
   const startDate = subDate(new Date(), input.cursor);
   const endDate = subDate(new Date(), input.cursor + 1);
   const response = await fetch(
     `https://api.github.com/search/repositories?q=language:"${input.language}"+created:${startDate.toISOString()}..${endDate.toISOString()}&sort=stars&order=desc&per_page=30`,
+    {
+      headers: githubToken
+        ? {
+            Authorization: `Bearer ${githubToken}`,
+          }
+        : undefined,
+    },
   );
   const data = (await response.json()) as RepositoryResponse;
   return {

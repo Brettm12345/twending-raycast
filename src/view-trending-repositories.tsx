@@ -4,6 +4,7 @@ import { useState } from "react";
 import { fetchRepos } from "./fetch-repos";
 import { languages } from "./languages";
 import type { Repository } from "./repository-response";
+
 interface ViewTrendingRepositoriesProps {
   language: string;
 }
