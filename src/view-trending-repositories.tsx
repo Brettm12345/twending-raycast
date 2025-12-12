@@ -1,14 +1,4 @@
-import {
-  Action,
-  ActionPanel,
-  Clipboard,
-  getPreferenceValues,
-  Icon,
-  Image,
-  List,
-  Toast,
-  useNavigation,
-} from "@raycast/api";
+import { Action, ActionPanel, getPreferenceValues, Icon, Image, List, Toast, useNavigation } from "@raycast/api";
 import { showFailureToast, useCachedPromise } from "@raycast/utils";
 import { useState } from "react";
 import { fetchRepos } from "./fetch-repos";
@@ -70,30 +60,30 @@ export function ViewTrendingRepositories(props: ViewTrendingRepositoriesProps) {
           ]}
           actions={
             <ActionPanel>
-              <Action title="View Repository" onAction={() => open(repository.html_url)} />
-              <Action
+              <Action.OpenInBrowser url={repository.html_url} shortcut={{ key: "v", modifiers: ["cmd"] }} />
+              <Action.OpenInBrowser
                 title="View Owner"
-                onAction={() => open(repository.owner.html_url)}
+                url={repository.owner.html_url}
                 shortcut={{ key: "o", modifiers: ["cmd"] }}
               />
-              <Action
+              <Action.CopyToClipboard
                 title="Copy Repository URL"
-                onAction={() => Clipboard.copy(repository.html_url)}
+                content={repository.html_url}
                 shortcut={{ key: "c", modifiers: ["cmd"] }}
               />
-              <Action
+              <Action.CopyToClipboard
                 title="Copy Repository Name"
-                onAction={() => Clipboard.copy(repository.name)}
+                content={repository.name}
                 shortcut={{ key: "n", modifiers: ["cmd"] }}
               />
-              <Action
+              <Action.CopyToClipboard
                 title="Copy Author/Repository"
-                onAction={() => Clipboard.copy(`${repository.owner.login}/${repository.name}`)}
+                content={`${repository.owner.login}/${repository.name}`}
                 shortcut={{ key: "d", modifiers: ["cmd"] }}
               />
-              <Action
+              <Action.CopyToClipboard
                 title="Copy Author"
-                onAction={() => Clipboard.copy(repository.owner.login)}
+                content={repository.owner.login}
                 shortcut={{ key: "o", modifiers: ["cmd"] }}
               />
             </ActionPanel>
