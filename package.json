@@ -13,8 +13,8 @@
         "usedAsExample": true
       },
       {
-        "input": "@twending Show trending repositories for the default language for the last week",
-        "expectedOutput": "The list of trending repositories for the default language for the last week",
+        "input": "@twending Show me a list of the trending repositories and give me a detailed summary of each trend for the date range period",
+        "expectedOutput": "The list of trending repositories and a detailed summary of each trend for the date range period",
         "usedAsExample": true
       },
       {
