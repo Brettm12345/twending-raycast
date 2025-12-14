@@ -85,7 +85,7 @@ export function ViewTrendingRepositories(props: ViewTrendingRepositoriesProps) {
               <Action.CopyToClipboard
                 title="Copy Author"
                 content={repository.owner.login}
-                shortcut={{ key: "o", modifiers: ["cmd"] }}
+                shortcut={{ key: "a", modifiers: ["cmd"] }}
               />
             </ActionPanel>
           }
