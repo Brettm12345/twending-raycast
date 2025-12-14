@@ -2,7 +2,7 @@
 
 A new way to view github trending
 
-## Configuation Options
+## Configuration Options
 
 - `defaultLanguage`: The default language to use if skip language selection is enabled
 - `defaultPeriod`: The default period to use if skip period selection is enabled

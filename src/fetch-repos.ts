@@ -41,6 +41,9 @@ export async function fetchRepos(input: FetchReposInput) {
         : undefined,
     },
   );
+  if (!response.ok) {
+    throw new Error(await response.text());
+  }
   const data = (await response.json()) as RepositoryResponse;
   return {
     hasMore: data.incomplete_results,
